@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index</title>
-</head>
-<body>
-    <h1>This is came from controller</h1>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('title',"Index Page")
+    
+@section('main')
+    <h1>Coming from page controller function</h1>
+@endsection
