@@ -22,7 +22,12 @@
             <input type="text" value="{{$email}}">
         </div>
         <div>
+            <label for="">Phone</label>
+            <input type="tel" name="" id="" value="{{$mobile}}">
+        </div>
+        <div>
             <button type="submit">Register</button>
         </div>
+        
     </form>
 @endsection

@@ -22,4 +22,7 @@ Route::get('/', function () {
 
 Route::get("/index", [PageController::class, "index"])->name("index");
 
-Route::get("/register",[RegisterController::class,"getRegisterPage"])->name("register");
+Route::get("/register/{name?}",[RegisterController::class,"getRegisterPage"])->name("register");
+
+
+Route::get("/login/{name?}",[RegisterController::class,"getLoginPage"])->name("login");
