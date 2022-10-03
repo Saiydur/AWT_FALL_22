@@ -7,6 +7,9 @@
     <title>@yield('title')</title>
 </head>
 <body>
+    <header>
+        @include('inc.nav')
+    </header>
     @yield('main')
 </body>
 </html>

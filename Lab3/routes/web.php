@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/index", [PageController::class, "index"]);
+Route::get("/index", [PageController::class, "index"])->name("index");
+
+Route::get("/register",[RegisterController::class,"getRegisterPage"])->name("register");
