@@ -25,3 +25,11 @@ Route::post("/register",[RegisterController::class,"RegisterUser"])->name("regis
 Route::get("/login",[RegisterController::class,"GetLoginUserPage"])->name("login.get");
 
 Route::post("/login",[RegisterController::class,"GetLoginUser"])->name("login.post");
+
+Route::get("/logout",[RegisterController::class,"LogoutUser"])->name("logout");
+
+Route::get("/dashboard",[RegisterController::class,"GetDashboard"])->name("dashboard");
+
+Route::get("/editprofile",[RegisterController::class,"EditProfile"])->name("editprofile");
+
+Route::post("/editprofile",[RegisterController::class,"UpdateProfile"])->name("updateprofile");
