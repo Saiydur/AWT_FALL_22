@@ -2,7 +2,18 @@
 
 @section('title',"Register")
 
+
+
 @section('container')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <h1>This is Registration Page</h1>
     <form action="{{route("register.post")}}" method="post">
         @csrf
@@ -43,7 +54,7 @@
         </div>
         <div>
             <label for="age">Age</label><br>
-            <input name="number" id="age" value={{old("age")}}>
+            <input name="age" id="age" value={{old("age")}}>
             @error('age')
                 <div class="text-danger">{{ $message }}</div>
             @enderror

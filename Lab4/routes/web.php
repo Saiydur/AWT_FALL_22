@@ -16,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name("index");
 
 Route::get("/register",[RegisterController::class,"GetRegisterPage"])->name("register.get");
 
 Route::post("/register",[RegisterController::class,"RegisterUser"])->name("register.post");
+
+Route::get("/login",[RegisterController::class,"GetLoginUserPage"])->name("login.get");
+
+Route::post("/login",[RegisterController::class,"GetLoginUser"])->name("login.post");

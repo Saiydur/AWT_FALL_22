@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRegistration;
+use App\Models\RegistrationUserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,9 +20,7 @@ class RegisterController extends Controller
         [
             "name"=>"required",
             "email"=>"required|email",
-            "password"=>"required|min:6|confirmed",
-            "confirm_password"=>"required|min:6",
-            "age"=> "required|value:14|digits_between:0,9"
+            "password"=>"required|min:6",
         ],
         [
             "name.required"=>"Name is required",
@@ -28,12 +28,32 @@ class RegisterController extends Controller
             "email.email"=>"Email is invalid",
             "password.required"=>"Password is required",
             "password.min"=>"Password must be at least 6 characters",
-            "password.confirmed"=>"Password and confirm password must be same",
-            "confirm_password.required"=>"Confirm password is required",
-            "confirm_password.min"=>"Confirm password must be at least 6 characters",
-            "age.required"=>"Age is required",
-            "age.value"=>"Age must be 14 or above"
         ]);
-        dd($request->all());
+        $user = new RegistrationUserModel();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->age = (int)$request->age;
+        $user->save();
+        return redirect()->route("index");
+    }
+
+    public function GetLoginUser(Request $request){
+        $user = RegistrationUserModel::where("email",$request->email)->first();
+        if($user){
+            if(password_verify($request->password,$user->password)){
+                dd("Login Success");
+            }
+            else{
+                dd("Password Wrong");
+            }
+        }
+        else{
+            dd("User Not Found");
+        }
+    }
+
+    public function GetLoginUserPage(){
+        return view("login");
     }
 }
